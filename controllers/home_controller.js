@@ -1,3 +1,6 @@
+console.log("Hello there!!");
 module.exports.home = function(req,res){
-    return res.send('<h1>Social Network</h1>')
+    return res.render('home',{
+        title: "home"
+    });
 }
