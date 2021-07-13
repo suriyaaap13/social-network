@@ -2,8 +2,7 @@ const express = require('express');
 const port = 8000;
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
-
-// it is taking back ground from layout u can see or we can try it once
+const db = require('./config/mongoose')
 
 
 app.use(express.static('assets'));
