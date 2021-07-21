@@ -16,6 +16,8 @@ app.use(cookieParser());
 app.use(express.static('assets'));
 app.use(expressLayouts);
 
+//set up the view engine
+
 app.set('view engine', 'ejs');
 app.set('views','./views');
 
@@ -34,11 +36,13 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(passport.setAuthenticatedUser);
+
 
 //use express router
 app.use('/',require('./routes'));
 
-//set up the view engine
+
 
 
 
