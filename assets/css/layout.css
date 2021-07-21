@@ -1,6 +1,7 @@
-body{
-    margin: 0;
-    padding: 0;
-    font-size: larger;
-    /* text-align: center; */
-}
+body {
+  margin: 0;
+  padding: 0;
+  font-size: larger;
+  /* text-align: center; */ }
+  body #layout-main {
+    height: 100%; }

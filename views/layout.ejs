@@ -4,15 +4,21 @@
             <%= title %>
         </title>
         <link rel="stylesheet" href="/css/layout.css">
+        <link rel="stylesheet" href="/css/header.css">
+        <link rel="stylesheet" href="/css/footer.css">
+
+        <!-- importing styles from othr files if it is present -->
         <%- style %>
-        <!-- style was not exported in layout  ok got it thanks another doubt in home.ejs-->
+        
     </head>
     <body>
         
         <%-  include('_header') %>
 
-
-        <%- body %>
+        <main id="layout-main">
+            <%- body %>
+        </main>
+        
 
         
         <%- include('_footer') %>

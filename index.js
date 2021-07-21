@@ -9,7 +9,16 @@ const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 // const { Store } = require('express-session');
-// const MongoStore = require('connect-mongostore')(session);
+const MongoStore = require('connect-mongo')(session);
+const sassMiddleware = require('node-sass-middleware');
+
+app.use(sassMiddleware({
+    src: './assets/scss',
+    dest: './assets/css',
+    debug: true,
+    outputStyle: 'extended',
+    prefix: '/css'
+}));
 
 
 app.use(express.urlencoded());
@@ -36,17 +45,17 @@ app.use(session({
     resave: false,
     cookie:{
         maxAge: (1000*60*100)
-    }
+    },
     //using mongo-store to store the session cookie in the db
-    // store: new MongoStore(
-    //     {
-    //         mongooseConnection: db,
-    //         autoRemove: 'disabled'
-    //     },
-    //     function(err){
-    //         console.log(err||'connect-mongodb setup completed');
-    //     }
-    // )
+    store: new MongoStore(
+        {
+            mongooseConnection: db,
+            autoRemove: 'disabled'
+        },
+        function(err){
+            console.log(err||'connect-mongodb setup completed');
+        }
+    )
 
 }));
 app.use(passport.initialize());
