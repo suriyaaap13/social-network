@@ -8,6 +8,8 @@ const db = require('./config/mongoose');
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
+// const { Store } = require('express-session');
+// const MongoStore = require('connect-mongostore')(session);
 
 
 app.use(express.urlencoded());
@@ -24,6 +26,8 @@ app.set('views','./views');
 app.set('layout extractStyles',true);
 app.set('layout extractScript',true);
 
+
+
 //using express-session
 app.use(session({
     name: 'social_network',
@@ -33,6 +37,17 @@ app.use(session({
     cookie:{
         maxAge: (1000*60*100)
     }
+    //using mongo-store to store the session cookie in the db
+    // store: new MongoStore(
+    //     {
+    //         mongooseConnection: db,
+    //         autoRemove: 'disabled'
+    //     },
+    //     function(err){
+    //         console.log(err||'connect-mongodb setup completed');
+    //     }
+    // )
+
 }));
 app.use(passport.initialize());
 app.use(passport.session());

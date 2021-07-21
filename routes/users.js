@@ -16,5 +16,7 @@ router.post('/create-session',passport.authenticate(
 
 ), userController.createSession);
 
+router.get('/sign-out',userController.signOut);
+
 console.log('user router is working');
 module.exports = router;
