@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const User = require('./user');
 const postSchema = mongoose.Schema({
     content:{
         type: String,
@@ -9,7 +10,7 @@ const postSchema = mongoose.Schema({
         ref: 'User'
     }
 },{
-    timeStamps: true
+    timestamps: true
 });
 const Post = mongoose.model('Post',postSchema);
 module.exports = Post;

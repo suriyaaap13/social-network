@@ -13,3 +13,6 @@
   .background ul li {
     display: inline-block;
     margin: 3px 20px; }
+    .background ul li a {
+      text-decoration: none;
+      color: white; }
