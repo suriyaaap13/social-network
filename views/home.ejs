@@ -1,9 +1,13 @@
 <link rel="stylesheet" href="/css/home.css">
 <p></p>
 <h1>
-    This is your Social Network
-    <form action="">
-        <textarea name="" id="" cols="30" rows="10"></textarea>
-        <button>post</button>
-    </form>
+    Social Network | <%= title %>
 </h1>
+
+<section id="feed-post">
+    <h3>Posts</h3>
+    <form action="" id="new-post-form" method="POST">
+        <textarea name="content" id="post-box" cols="30" rows="3" placeholder="Type your status..."></textarea>
+        <input type="submit" value="Post">
+    </form>
+</section>
