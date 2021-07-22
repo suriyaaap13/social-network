@@ -1,0 +1,15 @@
+.background {
+  background-color: grey;
+  width: 100%;
+  height: 75px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: sans-serif; }
+  .background #copy-rights {
+    margin-top: 30px;
+    margin-left: 20px; }
+  .background ul li {
+    display: inline-block;
+    margin: 3px 20px; }

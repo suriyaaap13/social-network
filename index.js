@@ -40,7 +40,7 @@ app.set('layout extractScript',true);
 //using express-session
 app.use(session({
     name: 'social_network',
-    secret: 'blahsomething',
+    secret: 'ganesh',
     saveUninitialized: false,
     resave: false,
     cookie:{
