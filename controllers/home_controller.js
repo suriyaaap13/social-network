@@ -3,42 +3,36 @@ const User = require('../models/user')
 
 
 //rendering the home page with posts
-module.exports.home = function(req,res){
-    // Post.find({},function(err,posts){
-    //     if(err){
-    //         console.log('Error in connecting to home controller');
-    //     }
-    //     return res.render('home',{
-    //         title: "SocNet | Home",
-    //         posts: posts
-    //     });
-    // });
+module.exports.home =async function(req,res){
 
-    //populating the user of post
-    Post.find({})
-    .populate('user')
-    .populate({
-        path: 'comments',
-        populate: {
-            path: 'user'
-        }
-    })
-    .exec(function(err,posts){
-
-        if(err){
-            console.log('Error in connecting to home controller');
-        }
-
-        User.find({},function(err,users){
-            return res.render('home',{
-                title: "SocNet | Home",
-                posts: posts,
-                all_users: users
-            });
+    try{
+        //populating the user of post
+        let posts =await Post.find({})
+        .populate('user')
+        .populate({
+            path: 'comments',
+            populate: {
+                path: 'user'
+            }
         });
 
+        let users = await User.find({});
+            return res.render('home',{
+            title: "SocNet | Home",
+            posts: posts,
+            all_users: users
+        });
+
+    }catch(err){
+        console.log('Error',err);
+        return;
+
+    }
+
+    
+
         
         
-    });
+
 
 }
