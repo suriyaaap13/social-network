@@ -1,5 +1,6 @@
 const cookieParser = require('cookie-parser');
 const express = require('express');
+const path = require('path');
 const port = 8000;
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
@@ -26,13 +27,14 @@ app.use(sassMiddleware({
 app.use(express.urlencoded());
 app.use(cookieParser());
 
-app.use(express.static('assets'));
+// app.use(express.static('assets'));
+app.use(express.static(path.join(__dirname, 'assets')));
 app.use(expressLayouts);
 
 //set up the view engine
 
 app.set('view engine', 'ejs');
-app.set('views','./views');
+app.set('views',path.join(__dirname,'views'));
 
 app.set('layout extractStyles',true);
 app.set('layout extractScript',true);
