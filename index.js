@@ -27,17 +27,25 @@ app.use(sassMiddleware({
 app.use(express.urlencoded());
 app.use(cookieParser());
 
+
+
 // app.use(express.static('assets'));
-app.use(express.static(path.join(__dirname, 'assets')));
+app.use(express.static(path.join(__dirname, '/assets')));
+
+//make the uploads path avaliable to the browser
+app.use('/uploads',express.static(__dirname+'/uploads'));
+
 app.use(expressLayouts);
+
+
+
+app.set('layout extractStyles',true);
+app.set('layout extractScript',true);
 
 //set up the view engine
 
 app.set('view engine', 'ejs');
 app.set('views',path.join(__dirname,'views'));
-
-app.set('layout extractStyles',true);
-app.set('layout extractScript',true);
 
 
 
